@@ -1,0 +1,9 @@
+@import './antd/index.css';
+
+html,
+body,
+#__next {
+  width: 100%;
+  height: 100%;
+  color: black;
+}

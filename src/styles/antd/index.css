@@ -1,0 +1,23 @@
+/* index */
+
+/* .ant-form-item div div {
+  height: auto !important;
+} */
+
+html,
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-bottom: 0;
+}
+
+.ant-btn {
+  font-size: 16px;
+}
+
+.ant-input {
+  font-size: 16px;
+}
