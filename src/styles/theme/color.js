@@ -1,7 +1,7 @@
 /** @type {import('@mui/material/styles').PaletteOptions} */
 module.exports = {
   primary: {
-    main: '#1565c0',
+    main: '#094f3c',
   },
   secondary: {
     main: '#7b1fa2',
