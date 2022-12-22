@@ -1,10 +1,7 @@
-import { useFetchCurrentUser } from 'hooks/useFetchCurrentUser';
 import React from 'react';
 
-import { LayoutWrapper } from '../containers/layoutWrapper';
+import { RootLayout } from './layout';
 
 export const RootContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  useFetchCurrentUser();
-
-  return <LayoutWrapper>{children}</LayoutWrapper>;
+  return <RootLayout>{children}</RootLayout>;
 };

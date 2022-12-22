@@ -12,6 +12,7 @@
     }
   },
   "rules": {
+    "t@typescript-eslint/no-var-requires": "off",
     "@next/next/no-img-element": "off",
     "react/self-closing-comp": "error",
     "simple-import-sort/imports": "error",
@@ -45,7 +46,7 @@
       "files": ["*.tsx", "*.ts"],
       "excludedFiles": ["**/antdWatch/**/*.tsx"],
       "rules": {
-        "react/jsx-no-literals": "error"
+        "react/jsx-no-literals": "warn"
       }
     }
   ]

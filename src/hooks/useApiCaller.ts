@@ -7,7 +7,6 @@ import {
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query';
-import { message } from 'antd';
 import { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { instanceToPlain, plainToInstance } from 'class-transformer';
 import { useAxios } from 'containers/axiosProvider';
@@ -21,8 +20,6 @@ type FetcherProps<TVariables> = {
   axios: AxiosInstance;
   dataResDto?: any;
 };
-
-const getT = (nameSpace: string, local: string) => (key: string, option?: any) => key;
 
 export async function fetcher<TVariables = unknown, TData = unknown>(
   { apiConfig, data, axios, dataResDto }: FetcherProps<TVariables>,
@@ -126,28 +123,19 @@ const showMessageError = (messageString: string) => {
   if (!messageString) {
     return;
   }
-
-  const hide = message.error(messageString);
-
-  setTimeout(hide, 5000);
 };
 
 const showMessageSuccess = (messageString: string) => {
   if (!messageString) {
     return;
   }
-
-  const hide = message.success(messageString);
-
-  setTimeout(hide, 2500);
 };
+const t = (key: string) => key;
 
 async function handleProcessErrorCommon<TResponseData>(result?: ResTemplate<TResponseData>) {
   if (typeof result?.success === 'undefined') {
     return;
   }
-
-  const t = await getT('jp', 'common');
 
   if (!result?.statusCode) {
     showMessageError(t('error_msg.no_api_network'));
@@ -163,15 +151,13 @@ async function handleProcessResponse<TResponseData>(result?: ResTemplate<TRespon
     return;
   }
 
-  const t = await getT('jp', 'common');
-
   if (!result?.success) {
     let message = '';
 
     if (option?.errorObj) {
       if (option.errorObj.message === true && result?.errorCode) {
         const messagePath = `api_error_msg.${result.errorCode}`;
-        message = t(messagePath, { count: 1 });
+        message = t(messagePath);
       }
 
       if (typeof option.errorObj.message === 'string') {

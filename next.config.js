@@ -1,12 +1,7 @@
-const withLess = require('next-with-less'); //eslint-disable-line @typescript-eslint/no-var-requires
-
-module.exports = withLess({
-  lessLoaderOptions: {},
-  // trailingSlash: true,
-  experimental: {
-    externalDir: true,
-  },
+/** @type {import('next').NextConfig} */
+module.exports = {
+  trailingSlash: true,
   images: {
     path: '/',
   },
-});
+};
