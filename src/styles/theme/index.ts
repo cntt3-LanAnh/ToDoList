@@ -9,6 +9,11 @@ const customThemeOption: ThemeOptions = {
   components: {
     MuiButton: { defaultProps: { disableElevation: true } },
   },
+  typography: {
+    button: {
+      textTransform: 'none',
+    },
+  },
 };
 
 export const miuiTheme = createTheme(customThemeOption);

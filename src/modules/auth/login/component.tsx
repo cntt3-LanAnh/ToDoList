@@ -1,4 +1,5 @@
-import { Checkbox, TextField } from '@mui/material';
+import { Button, Checkbox, FormControlLabel, TextField } from '@mui/material';
+import Link from 'next/link';
 
 export const Component = () => {
   return (
@@ -16,9 +17,17 @@ export const Component = () => {
           <h1 className="font-bold text-3xl">Sign In</h1>
           <TextField className="mt-14" placeholder="Email" fullWidth />
           <TextField className="mt-5" placeholder="Password" fullWidth />
-          <div className="flex items-center mt-5">
-            <Checkbox />
-            <p>Remember me</p>
+          <div className="flex items-center mt-5 justify-between">
+            <FormControlLabel label="Remember me" control={<Checkbox checked />} />
+            <Link href="/">Forgot Password?</Link>
+          </div>
+          <div className="mt-7">
+            <Button variant="contained" className="px-12 py-3">
+              Login
+            </Button>
+            <Button variant="outlined" className="px-10 py-3 ml-5">
+              Register
+            </Button>
           </div>
           <p className="mt-24">By signin up, you agree to our Terms and Conditions & Privacy Policy</p>
         </form>

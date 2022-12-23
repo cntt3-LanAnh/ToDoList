@@ -1,4 +1,4 @@
 export enum LayoutType {
-  authenticated = 'authenticated',
-  authentication = 'authentication',
+  client = 'client',
+  admin = 'admin',
 }
