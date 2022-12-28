@@ -1,9 +1,9 @@
-import { CssBaseline, StyledEngineProvider, ThemeProvider } from '@mui/material';
+import { ConfigProvider } from 'antd';
 import { index as LayoutAdmin } from 'components/layout/admin';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import React from 'react';
-import { miuiTheme } from 'styles/theme';
+import { customThemeOption } from 'styles/theme';
 import { LayoutType } from 'types/app';
 
 export type NextPageWithLayout<P = object, IP = P> = NextPage<P, IP> & {
@@ -28,11 +28,5 @@ const getLayout = ({ children, layoutType }: { children: NextPageWithLayout & Re
 export function RootLayout({ children }: { children: NextPageWithLayout & React.ReactNode }) {
   const layoutType = children?.type?.layoutType;
 
-  return (
-    <ThemeProvider theme={miuiTheme}>
-      <StyledEngineProvider injectFirst />
-      <CssBaseline />
-      {getLayout({ children, layoutType })}
-    </ThemeProvider>
-  );
+  return <ConfigProvider theme={customThemeOption}>{getLayout({ children, layoutType })}</ConfigProvider>;
 }

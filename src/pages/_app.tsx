@@ -9,6 +9,7 @@ import Head from 'next/head';
 import { Router } from 'next/router';
 import { NextSeo } from 'next-seo';
 import nProgress from 'nprogress';
+import { GlobalStoreProvider } from 'stores';
 
 Router.events.on('routeChangeStart', nProgress.start);
 Router.events.on('routeChangeError', nProgress.done);
@@ -23,13 +24,15 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
-      <AxiosProvider>
-        <QueryClientProvider client={queryClient}>
-          <RootContainer>
-            <Component {...pageProps} />
-          </RootContainer>
-        </QueryClientProvider>
-      </AxiosProvider>
+      <GlobalStoreProvider>
+        <AxiosProvider>
+          <QueryClientProvider client={queryClient}>
+            <RootContainer>
+              <Component {...pageProps} />
+            </RootContainer>
+          </QueryClientProvider>
+        </AxiosProvider>
+      </GlobalStoreProvider>
     </>
   );
 }

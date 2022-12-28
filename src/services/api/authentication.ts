@@ -19,7 +19,7 @@ export const newPassword: APIConfig = {
 };
 
 export const checkToken = (token?: string): APIConfig => ({
-  endPoint: `/api/password-reset/${token}`,
+  endPoint: `/api/password-reset/{token}`,
   keys: [`check-token/${token}`],
   method: 'GET',
 });

@@ -5,7 +5,9 @@
     "**/.git": true,
     "**/node_modules": true,
     "**/dist": true,
-    "**/logs": true
+    "**/logs": true,
+    "**/yarn.lock": true,
+    "**/package-lock.json": true
   },
   "cSpell.ignoreRegExpList": ["persistor", "miui", "uuidv4", "nprogress", "htmls", "simplebar", "Eles", "Formik", "antd", "clsx", "dont"],
   "editor.quickSuggestions": {

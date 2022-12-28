@@ -196,7 +196,7 @@ export function useQuery<TVariables, TResponseData>({
   const queryKeys = useMemo(() => {
     let keys: any[] = [];
 
-    if (apiConfig.keys.length) {
+    if (apiConfig?.keys?.length) {
       keys = [...keys, ...apiConfig.keys];
     }
 

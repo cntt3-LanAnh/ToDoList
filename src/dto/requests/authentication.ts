@@ -5,6 +5,7 @@ export class LoginReqDto {
   email: string;
   @Expose({ name: 'pwd' })
   password: string;
+  remember: boolean;
 }
 
 export class ResetPasswordReqDto {

@@ -1,19 +1,20 @@
 'use client';
 
-import { createTheme, ThemeOptions } from '@mui/material/styles';
+import { ThemeConfig } from 'antd/es/config-provider/context';
 
 import paletteOptions from './color';
 
-const customThemeOption: ThemeOptions = {
-  palette: paletteOptions,
-  components: {
-    MuiButton: { defaultProps: { disableElevation: true } },
+export const customThemeOption: ThemeConfig = {
+  token: {
+    colorPrimary: paletteOptions.primary,
   },
-  typography: {
-    button: {
-      textTransform: 'none',
+  components: {
+    Input: {
+      controlHeight: 46,
+      controlOutline: 'white',
+    },
+    Button: {
+      controlHeight: 46,
     },
   },
 };
-
-export const miuiTheme = createTheme(customThemeOption);
