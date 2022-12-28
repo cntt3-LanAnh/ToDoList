@@ -11,8 +11,8 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="manifest" href="/assets/favicon_io/site.webmanifest" />
-          <link rel="icon" type="image/x-icon" href="/assets/favicon_io/favicon.ico" />
+          <link rel="manifest" href="/favicon_io/site.webmanifest" />
+          <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico" />
         </Head>
         <body>
           <Main />

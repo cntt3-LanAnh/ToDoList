@@ -1,12 +1,13 @@
-import { Button, Checkbox, Input, InputNumber } from 'antd';
+import { Button, Checkbox, Input } from 'antd';
 import { FormControl } from 'components/formControl';
 import Link from 'next/link';
+import useTranslation from 'next-translate/useTranslation';
 
 import { FormHandler } from './useLogic';
 
-const renderCounter = 0;
-
 export const Component = ({ formHandler }: { formHandler: FormHandler }) => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="h-screen flex w-full overflow-hidden">
@@ -14,7 +15,7 @@ export const Component = ({ formHandler }: { formHandler: FormHandler }) => {
           <div className="absolute inset-0 bg-primary rounded-[100%] rotate-12 -ml-[25%] -mt-[20%] -mb-[20%]" />
           <div className="z-10 self-center text-white flex flex-col ">
             <img src="/images/cloud_network.png" alt="cloud_network" className="w-96 h-auto  " />
-            <h1 className="text-5xl mt-3">CMS</h1>
+            <h1 className="text-5xl mt-3">{t('common:hello')}</h1>
             <p className="mt-1">Manage all your contents accounts in one place</p>
           </div>
         </div>
@@ -24,8 +25,8 @@ export const Component = ({ formHandler }: { formHandler: FormHandler }) => {
             <FormControl label="Email" classes={{ root: 'mt-14' }} name="email" control={formHandler.control}>
               {() => <Input />}
             </FormControl>
-            <FormControl label="Email" classes={{ root: 'mt-5' }} name="email" control={formHandler.control}>
-              {() => <Input />}
+            <FormControl label="Password" classes={{ root: 'mt-5' }} name="email" control={formHandler.control}>
+              {() => <Input type="password" />}
             </FormControl>
             <div className="flex items-center mt-5 justify-between">
               <Checkbox {...formHandler.register('remember')}>Remember</Checkbox>
