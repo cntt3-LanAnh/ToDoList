@@ -16,7 +16,7 @@ declare global {
 }
 
 declare module 'react-hook-form' {
-  export type UseFormReturn<TFieldValues extends FieldValues = FieldValues, TContext = any> = {
+  export type UseFormReturn<TFieldValues extends FieldValues = FieldValues, TContext = unknown> = {
     watch: UseFormWatch<TFieldValues>;
     getValues: UseFormGetValues<TFieldValues>;
     getFieldState: UseFormGetFieldState<TFieldValues>;

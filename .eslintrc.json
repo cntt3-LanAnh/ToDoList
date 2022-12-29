@@ -18,6 +18,7 @@
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "no-console": "error",
+    "@typescript-eslint/no-unused-vars": "error",
     "padding-line-between-statements": [
       "error",
       { "blankLine": "always", "prev": "*", "next": "return" },
@@ -47,6 +48,12 @@
       "excludedFiles": ["**/antdWatch/**/*.tsx"],
       "rules": {
         "react/jsx-no-literals": "warn"
+      }
+    },
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
       }
     }
   ]
