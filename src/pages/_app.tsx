@@ -19,9 +19,27 @@ Router.events.on('routeChangeError', nProgress.done);
 Router.events.on('routeChangeComplete', nProgress.done);
 
 const queryClient = new QueryClient();
-import common from '../../locales/jp/common.json';
+import { useMemo } from 'react';
+
+import JPCommon from '../../locales/jp/common.json';
+import JPLogin from '../../locales/jp/login.json';
+
+const i18nNameSpaceJP = {
+  common: JPCommon,
+  login: JPLogin,
+};
+
+// const i18nNameSpaceEN = {
+//   common: ENCommon,
+// };
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
+  const i18nNameSpace = useMemo(() => {
+    // Get Current Language in order to load namespace
+
+    return i18nNameSpaceJP;
+  }, []);
+
   return (
     <>
       <NextSeo defaultTitle="Admin" />
@@ -29,7 +47,7 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </Head>
       <GlobalStoreProvider>
-        <I18nProvider lang={'jp'} namespaces={{ common }} config={i18nConfig}>
+        <I18nProvider lang={'jp'} namespaces={i18nNameSpace} config={i18nConfig}>
           <AxiosProvider>
             <QueryClientProvider client={queryClient}>
               <RootContainer>
