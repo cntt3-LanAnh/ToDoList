@@ -1,6 +1,8 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 import { FieldPath, FieldValues, Path, RegisterOptions, UnPackAsyncDefaultValues, useForm, UseFormProps } from 'react-hook-form';
 import { useGlobalStoreContext } from 'stores';
+import { OptionalObjectSchema } from 'yup/lib/object';
 
 type InitialStateCustom = {
   preventTrim: boolean;
@@ -10,10 +12,24 @@ type InitialStateCustom = {
 interface IUseFormHandlerProps<TFieldValues extends FieldValues> {
   initialState: UseFormProps<TFieldValues>;
   onSubmit?: (data: TFieldValues) => void;
+  resolver?: OptionalObjectSchema<any>;
 }
 
-export function useFormHandler<TFieldValues extends FieldValues>({ initialState, onSubmit }: IUseFormHandlerProps<TFieldValues>) {
-  const { register: registerCustom, handleSubmit: submitForm, ...useFormProps } = useForm<TFieldValues>(initialState);
+export function useFormHandler<TFieldValues extends FieldValues>({ initialState, onSubmit, resolver }: IUseFormHandlerProps<TFieldValues>) {
+  const useFormOption: UseFormProps<TFieldValues> = initialState || {};
+
+  if (resolver) {
+    useFormOption.resolver = yupResolver(resolver);
+  }
+
+  const {
+    register: registerCustom,
+    handleSubmit: submitForm,
+    ...useFormProps
+  } = useForm<TFieldValues>({
+    mode: 'onChange',
+    ...useFormOption,
+  });
   const { appStore } = useGlobalStoreContext();
 
   useEffect(() => {

@@ -28,6 +28,13 @@
   },
   "editor.tabSize": 2,
   "eslint.validate": ["javascript", "javascriptreact", "html", "typescriptreact"],
-  "i18n-ally.localesPaths": ["packages/admin/locales", "packages/user/locales"],
-  "javascript.suggestionActions.enabled": false
+  "javascript.suggestionActions.enabled": false,
+  "i18n-ally.localesPaths": ["locales"],
+  "i18n-ally.sourceLanguage": "jp",
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.displayLanguage": "jp",
+  "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
+  "i18n-ally.enabledFrameworks": ["i18next", "react"],
+  "i18n-ally.namespace": true,
+  "i18n-ally.defaultNamespace": "common"
 }

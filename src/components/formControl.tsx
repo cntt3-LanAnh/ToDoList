@@ -1,7 +1,16 @@
 import { Form } from 'antd';
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
-import { Control, Controller, ControllerFieldState, ControllerRenderProps, FieldPath, FieldValues, UseFormStateReturn } from 'react-hook-form';
+import {
+  Control,
+  Controller,
+  ControllerFieldState,
+  ControllerRenderProps,
+  FieldPath,
+  FieldValues,
+  FormState,
+  UseFormStateReturn,
+} from 'react-hook-form';
 
 type FormControlChildrenProps<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> = {
   field: ControllerRenderProps<TFieldValues, TName>;
@@ -14,13 +23,15 @@ interface Props<TFieldValues extends FieldValues = FieldValues, TName extends Fi
     root?: string;
     label?: string;
   };
-  children: (props: FormControlChildrenProps<TFieldValues, TName>) => React.ReactElement;
+  isControlled?: boolean;
+  children: ((props: FormControlChildrenProps<TFieldValues, TName>) => React.ReactElement) | ReactNode;
   label?: string;
   errorMsg?: string;
   name: TName;
   layoutType?: 'horizontal' | 'vertical';
   required?: boolean;
   control?: Control<TFieldValues>;
+  formState?: FormState<TFieldValues>;
 }
 
 declare const ValidateStatuses: ['success', 'warning', 'error', 'validating', ''];
@@ -65,6 +76,37 @@ function FormItemLayout({ children, layoutType, label, classes, required }: Form
   );
 }
 
+function getValidateResult<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>(
+  formState?: FormState<TFieldValues>,
+  name?: TName
+): { validateStatus: ValidateStatus; help?: string } {
+  if (!formState || !name) {
+    return {
+      validateStatus: '',
+      help: '',
+    };
+  }
+
+  if (!formState.isDirty && !formState.isSubmitted) {
+    return {
+      validateStatus: '',
+      help: '',
+    };
+  }
+
+  if (formState.errors[name]?.message) {
+    return {
+      validateStatus: 'error',
+      help: formState.errors[name]?.message as string,
+    };
+  }
+
+  return {
+    validateStatus: 'success',
+    help: '',
+  };
+}
+
 export function FormControl<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
   classes,
   children,
@@ -72,12 +114,22 @@ export function FormControl<TFieldValues extends FieldValues = FieldValues, TNam
   layoutType = 'vertical',
   required,
   control,
+  isControlled,
   name,
+  formState,
 }: Props<TFieldValues, TName>) {
   return (
     <FormItemLayout layoutType={layoutType} classes={classes} label={label} required={required}>
-      <Form.Item className={clsx({ '[&>div]:flex-col': layoutType === 'vertical' })}>
-        <Controller control={control} name={name} render={(formProps) => children(formProps)} />
+      <Form.Item
+        className={clsx({ '[&>div]:flex-col': layoutType === 'vertical' })}
+        {...getValidateResult<TFieldValues>(formState, name)}
+        hasFeedback
+      >
+        {isControlled ? (
+          <Controller control={control} name={name} render={(formProps) => <>{typeof children === 'function' && children(formProps)}</>} />
+        ) : (
+          <>{children}</>
+        )}
       </Form.Item>
     </FormItemLayout>
   );

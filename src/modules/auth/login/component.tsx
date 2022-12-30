@@ -22,11 +22,23 @@ export const Component = ({ formHandler }: { formHandler: FormHandler }) => {
         <div className="flex-1 flex flex-col items-center justify-center">
           <form className="self-center min-w-[30rem]">
             <h1 className="font-bold text-3xl">{t('form.title')}</h1>
-            <FormControl label={t('form.email')} classes={{ root: 'mt-14' }} name="email" control={formHandler.control}>
-              {() => <Input />}
+            <FormControl
+              label={t('form.email')}
+              classes={{ root: 'mt-14' }}
+              name="email"
+              control={formHandler.control}
+              formState={formHandler.formState}
+            >
+              <Input />
             </FormControl>
-            <FormControl label={t('form.password')} classes={{ root: 'mt-5' }} name="email" control={formHandler.control}>
-              {() => <Input type="password" />}
+            <FormControl
+              label={t('login:form.password')}
+              classes={{ root: 'mt-5' }}
+              name="email"
+              formState={formHandler.formState}
+              control={formHandler.control}
+            >
+              <Input type="password" />
             </FormControl>
             <div className="flex items-center mt-5 justify-between">
               <Checkbox {...formHandler.register('remember')}>{t('form.remember')}</Checkbox>
