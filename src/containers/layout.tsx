@@ -1,3 +1,4 @@
+import { StyleProvider } from '@ant-design/cssinjs';
 import { ConfigProvider } from 'antd';
 import { index as LayoutAdmin } from 'components/layout/admin';
 import { NextPage } from 'next';
@@ -28,5 +29,9 @@ const getLayout = ({ children, layoutType }: { children: NextPageWithLayout & Re
 export function RootLayout({ children }: { children: NextPageWithLayout & React.ReactNode }) {
   const layoutType = children?.type?.layoutType;
 
-  return <ConfigProvider theme={customThemeOption}>{getLayout({ children, layoutType })}</ConfigProvider>;
+  return (
+    <StyleProvider hashPriority="high">
+      <ConfigProvider theme={customThemeOption}>{getLayout({ children, layoutType })}</ConfigProvider>
+    </StyleProvider>
+  );
 }

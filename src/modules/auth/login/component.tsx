@@ -1,4 +1,4 @@
-import { Button, Checkbox, Input } from 'antd';
+import { Button, Checkbox, Form, Input } from 'antd';
 import { FormControl } from 'components/formControl';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
@@ -20,23 +20,23 @@ export const Component = ({ formHandler }: { formHandler: FormHandler }) => {
           </div>
         </div>
         <div className="flex-1 flex flex-col items-center justify-center">
-          <form className="self-center min-w-[30rem]">
+          <Form className="self-center min-w-[30rem]" validateTrigger="onChange">
             <h1 className="font-bold text-3xl">{t('form.title')}</h1>
             <FormControl
               label={t('form.email')}
               classes={{ root: 'mt-14' }}
               name="email"
-              control={formHandler.control}
               formState={formHandler.formState}
+              control={formHandler.control}
             >
               <Input />
             </FormControl>
             <FormControl
               label={t('login:form.password')}
-              classes={{ root: 'mt-5' }}
-              name="email"
+              classes={{ root: 'mt-2' }}
+              name="password"
               formState={formHandler.formState}
-              control={formHandler.control}
+              control={formHandler.register}
             >
               <Input type="password" />
             </FormControl>
@@ -51,7 +51,7 @@ export const Component = ({ formHandler }: { formHandler: FormHandler }) => {
               <Button className="ml-7 px-10">{t('form.register')}</Button>
             </div>
             <p className="mt-24">{t('form.termAndConditional')}</p>
-          </form>
+          </Form>
         </div>
       </div>
     </>

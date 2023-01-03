@@ -27,7 +27,8 @@ export function useFormHandler<TFieldValues extends FieldValues>({ initialState,
     handleSubmit: submitForm,
     ...useFormProps
   } = useForm<TFieldValues>({
-    mode: 'onChange',
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
     ...useFormOption,
   });
   const { appStore } = useGlobalStoreContext();

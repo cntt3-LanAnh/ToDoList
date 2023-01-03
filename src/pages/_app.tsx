@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import 'antd/dist/reset.css';
 import 'styles/index.css';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';

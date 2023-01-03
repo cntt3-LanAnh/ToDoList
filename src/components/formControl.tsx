@@ -1,37 +1,21 @@
-import { Form } from 'antd';
 import clsx from 'clsx';
+import { AnimatePresence, motion } from 'framer-motion';
 import React, { ReactNode } from 'react';
-import {
-  Control,
-  Controller,
-  ControllerFieldState,
-  ControllerRenderProps,
-  FieldPath,
-  FieldValues,
-  FormState,
-  UseFormStateReturn,
-} from 'react-hook-form';
-
-type FormControlChildrenProps<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> = {
-  field: ControllerRenderProps<TFieldValues, TName>;
-  fieldState: ControllerFieldState;
-  formState: UseFormStateReturn<TFieldValues>;
-};
+import { Control, Controller, FieldPath, FieldValues, FormState, UseFormRegister } from 'react-hook-form';
 
 interface Props<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> {
   classes?: {
     root?: string;
     label?: string;
   };
-  isControlled?: boolean;
-  children: ((props: FormControlChildrenProps<TFieldValues, TName>) => React.ReactElement) | ReactNode;
+  children: React.ReactElement;
   label?: string;
   errorMsg?: string;
   name: TName;
   layoutType?: 'horizontal' | 'vertical';
   required?: boolean;
-  control?: Control<TFieldValues>;
-  formState?: FormState<TFieldValues>;
+  control: Control<TFieldValues> | UseFormRegister<TFieldValues>;
+  formState: FormState<TFieldValues>;
 }
 
 declare const ValidateStatuses: ['success', 'warning', 'error', 'validating', ''];
@@ -56,7 +40,7 @@ function FormItemLayout({ children, layoutType, label, classes, required }: Form
   if (layoutType === 'vertical') {
     return (
       <div className={clsx(classes?.root)}>
-        <p className={clsx(classes?.label, 'mb-3')}>
+        <p className={clsx(classes?.label, 'mb-2')}>
           {label}
           {required && '*'}
         </p>
@@ -66,45 +50,14 @@ function FormItemLayout({ children, layoutType, label, classes, required }: Form
   }
 
   return (
-    <div className={clsx(classes?.root, 'flex, flex-col')}>
-      <p className={clsx(classes?.label, 'ml-3')}>
+    <div className={clsx(classes?.root, 'flex items-center')}>
+      <p className={clsx(classes?.label, 'ml-3 mb-6')}>
         {label}
         {required && '*'}
       </p>
-      {children}
+      <div>{children}</div>
     </div>
   );
-}
-
-function getValidateResult<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>(
-  formState?: FormState<TFieldValues>,
-  name?: TName
-): { validateStatus: ValidateStatus; help?: string } {
-  if (!formState || !name) {
-    return {
-      validateStatus: '',
-      help: '',
-    };
-  }
-
-  if (!formState.isDirty && !formState.isSubmitted) {
-    return {
-      validateStatus: '',
-      help: '',
-    };
-  }
-
-  if (formState.errors[name]?.message) {
-    return {
-      validateStatus: 'error',
-      help: formState.errors[name]?.message as string,
-    };
-  }
-
-  return {
-    validateStatus: 'success',
-    help: '',
-  };
 }
 
 export function FormControl<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({
@@ -114,23 +67,35 @@ export function FormControl<TFieldValues extends FieldValues = FieldValues, TNam
   layoutType = 'vertical',
   required,
   control,
-  isControlled,
   name,
   formState,
 }: Props<TFieldValues, TName>) {
+  const messageError = formState.errors[name]?.message?.toString?.();
+
   return (
     <FormItemLayout layoutType={layoutType} classes={classes} label={label} required={required}>
-      <Form.Item
-        className={clsx({ '[&>div]:flex-col': layoutType === 'vertical' })}
-        {...getValidateResult<TFieldValues>(formState, name)}
-        hasFeedback
-      >
-        {isControlled ? (
-          <Controller control={control} name={name} render={(formProps) => <>{typeof children === 'function' && children(formProps)}</>} />
-        ) : (
-          <>{children}</>
-        )}
-      </Form.Item>
+      {typeof control === 'function' ? (
+        React.cloneElement(children, { ...control(name), ...(messageError && { status: 'error' }) })
+      ) : (
+        <Controller
+          control={control}
+          name={name}
+          render={(formProps) => React.cloneElement(children, { ...formProps.field, ...(messageError && { status: 'error' }) })}
+        />
+      )}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={messageError}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.1 }}
+        >
+          <p role="alert" className="text-error h-6 text-sm">
+            {messageError}
+          </p>
+        </motion.div>
+      </AnimatePresence>
     </FormItemLayout>
   );
 }
