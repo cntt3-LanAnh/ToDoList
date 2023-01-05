@@ -1,10 +1,6 @@
 import { Index } from 'modules/admin/dashboard';
 import { LayoutType } from 'types/app';
 
-const Dashboard = () => {
-  return <Index />;
-};
+Index.layoutType = LayoutType.admin;
 
-Dashboard.layoutType = LayoutType.admin;
-
-export default Dashboard;
+export default Index;

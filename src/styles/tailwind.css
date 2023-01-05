@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer components {
-  .container {
+  .app-container {
     @apply max-w-[1104px] m-auto pl-4 pr-4;
   }
 }

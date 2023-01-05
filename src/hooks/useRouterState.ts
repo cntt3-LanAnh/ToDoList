@@ -12,10 +12,10 @@ export function useRouterState<T>({ initialValue, pathname }: { initialValue: T;
   };
 
   useEffect(() => {
-    const params = Object.fromEntries(new URLSearchParams(window.location.search)) as any;
+    const params = Object.fromEntries(new URLSearchParams(window.location.search));
 
     if (Object.entries(params).length) {
-      setRootStoredValue({ value: params, isReady: true });
+      setRootStoredValue({ value: params as T, isReady: true });
     } else {
       setRootStoredValue({ value: initialValue, isReady: true });
     }

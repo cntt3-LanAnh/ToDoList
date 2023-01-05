@@ -1,3 +1,5 @@
+import { LayoutType } from './app';
+
 export {};
 
 declare module 'react' {
@@ -6,6 +8,7 @@ declare module 'react' {
     type?: {
       layout?: string;
     };
+    layoutType?: LayoutType;
   }
 }
 
@@ -27,7 +30,7 @@ declare module 'react-hook-form' {
     formState: FormState<TFieldValues>;
     resetField: UseFormResetField<TFieldValues>;
     reset: UseFormReset<TFieldValues>;
-    handleSubmit: (data?: any) => void;
+    handleSubmit: (data?: unknown) => void;
     unregister: UseFormUnregister<TFieldValues>;
     control: Control<TFieldValues, TContext>;
     register: UseFormRegister<TFieldValues>;

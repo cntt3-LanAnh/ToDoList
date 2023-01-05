@@ -15,7 +15,7 @@ export function AxiosProvider({ children }: React.PropsWithChildren<unknown>) {
     });
 
     axios.interceptors.request.use((config) => {
-      const token = sessionStorage.getItem('token');
+      const token = window.localStorage.getItem(appConfig.authSecretKey);
       const customConfig = config as any;
       if (token) {
         customConfig.headers.Authorization = `Bearer ${token}`;

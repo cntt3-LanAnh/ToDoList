@@ -33,6 +33,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.41.1",
     "reflect-metadata": "^0.1.13",
+    "swr": "^2.0.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
