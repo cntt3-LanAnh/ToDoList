@@ -9,7 +9,21 @@
     "**/yarn.lock": true,
     "**/package-lock.json": true
   },
-  "cSpell.ignoreRegExpList": ["persistor", "miui", "uuidv4", "nprogress", "htmls", "simplebar", "Eles", "Formik", "antd", "clsx", "dont"],
+  "cSpell.ignoreRegExpList": [
+    "persistor",
+    "msfilter",
+    "boxicons",
+    "miui",
+    "uuidv4",
+    "nprogress",
+    "htmls",
+    "simplebar",
+    "Eles",
+    "Formik",
+    "antd",
+    "clsx",
+    "dont"
+  ],
   "editor.quickSuggestions": {
     "other": true,
     "comments": false,

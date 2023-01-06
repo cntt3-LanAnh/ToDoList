@@ -30,8 +30,8 @@ export function RootLayout({ children }: { children: NextPageWithLayout & React.
   const layoutType = children?.type?.layoutType;
 
   return (
-    <StyleProvider hashPriority="high">
-      <ConfigProvider theme={customThemeOption}>{getLayout({ children, layoutType })}</ConfigProvider>
-    </StyleProvider>
+    <ConfigProvider theme={customThemeOption}>
+      <StyleProvider hashPriority="high">{getLayout({ children, layoutType })}</StyleProvider>
+    </ConfigProvider>
   );
 }

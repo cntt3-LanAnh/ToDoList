@@ -5,6 +5,6 @@ module.exports = {
   warning: '#ff9800',
   info: '#0288d1',
   success: '#4caf50',
-  background: '#f8f8f8',
+  background: '#f7f8fa',
   'background-sidebar': '#121e2d',
 };

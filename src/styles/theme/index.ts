@@ -8,6 +8,7 @@ export const customThemeOption: ThemeConfig = {
   token: {
     colorPrimary: paletteOptions.primary,
   },
+  hashed: false,
   components: {
     Input: {
       controlHeight: 46,

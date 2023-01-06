@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-css-tags */
 import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs';
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 
@@ -10,7 +11,7 @@ class MyDocument extends Document {
       originalRenderPage({
         enhanceApp: (App) => (props) =>
           (
-            <StyleProvider cache={cache}>
+            <StyleProvider autoClear ssrInline>
               <App {...props} />
             </StyleProvider>
           ),
@@ -35,6 +36,7 @@ class MyDocument extends Document {
         <Head>
           <link rel="manifest" href="/favicon_io/site.webmanifest" />
           <link rel="icon" type="image/x-icon" href="/favicon_io/favicon.ico" />
+          <link rel="stylesheet" href="/styles/boxicons.min.css" />
         </Head>
         <body>
           <Main />

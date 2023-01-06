@@ -1,5 +1,5 @@
-import 'reflect-metadata';
 import 'styles/index.css';
+import 'reflect-metadata';
 
 import { AppPropsWithLayout } from 'containers/layout';
 import { RootContainer } from 'containers/root';

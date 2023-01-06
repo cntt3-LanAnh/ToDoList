@@ -1,5 +1,5 @@
 import { LoginReqDto } from 'dto/requests';
-import { useFormHandler } from 'hooks';
+import { useFormHandler } from 'hooks/useFormHandler';
 import useTranslation from 'next-translate/useTranslation';
 import { UseFormReturn } from 'react-hook-form';
 
