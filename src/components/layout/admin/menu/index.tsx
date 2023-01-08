@@ -17,9 +17,11 @@ const menuList: MenuObj[] = [
     children: [
       {
         title: 'Dashboard 1',
+        icon: <HomeIcon />,
       },
       {
-        title: 'Dashboard 1',
+        title: 'Dashboard 2',
+        icon: <HomeIcon />,
       },
       {
         title: 'Dashboard 1',
@@ -60,7 +62,7 @@ export const Menu = () => {
         <ul className="flex list-none h-14 ">
           {menuList.map((menu, index) =>
             menu.children ? (
-              <MenuCollapse menu={menu} key={index} setMenuChildren={handleSetMenuChildren} />
+              <MenuCollapse menu={menu} key={index} setMenuChildren={handleSetMenuChildren} isActive />
             ) : (
               <li key={index}>
                 <Link href="#" className="block h-full no-underline text-inherit">
@@ -76,14 +78,14 @@ export const Menu = () => {
       </div>
 
       {menuChildren?.length ? (
-        <div className="">
-          <div className="h-1 bg-background" />
+        <div className="text-gray-500" data-aos="fade-down" data-aos-offset="200" data-aos-delay="50" data-aos-easing="ease-in-out">
+          <div className="h-[8px] bg-background" />
           <div className="bg-white border-l-0 border-r-0 border-t border-b border-solid border-gray-300 px-4">
             <ul className="app-container flex list-none h-10">
               {menuChildren.map((menu, index) => (
                 <li key={index}>
                   <Link href="#" className="block h-full no-underline text-inherit">
-                    <div className="px-10 h-full flex items-center">
+                    <div className="pr-14 h-full flex items-center">
                       {menu.icon && <div className="text-lg leading-none mr-2">{menu.icon}</div>}
                       <span>{menu.title}</span>
                     </div>
