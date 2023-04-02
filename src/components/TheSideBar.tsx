@@ -4,7 +4,7 @@ import { CiClock2, CiHome, CiSettings, CiSquareCheck, CiUser, CiViewList } from 
 
 export const Sidebar = () => {
   return (
-    <div className="min-h-screen bg-purple-700 w-[90px] sticky">
+    <div className=" bg-purple-700 w-[90px] sticky h-[100vh]">
       <div className="flex flex-col items-center justify-between">
         <div className="mt-10 mb-32 font-bold text-purple-200 text-2xl">LOGO</div>
         <div className="flex flex-col">

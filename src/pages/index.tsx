@@ -20,11 +20,92 @@ export default function HomePage() {
     is3D: false,
   };
 
+  const Data = [
+    {
+      subData: [
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+      ],
+      title: 'Started',
+    },
+    {
+      subData: [
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+      ],
+      title: 'Doing',
+    },
+    {
+      subData: [
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+      ],
+      title: 'Complete',
+    },
+  ];
+
+  // const ListItem = () => {
+  //   return(
+  //     Data.map((item, index) => {
+  //   <Item key={index} title="Started" description={item.description} avata={item.avata} tag={item.tag} />;
+  // })
+  //   )
+  // };
+
   return (
     <div>
       <Layout>
         <div className="flex justify-between mx-6">
-          <div className="bg-white rounded-[30px] min-h-screen w-[72%] p-6">
+          <div className="bg-white rounded-[30px]  w-[72%] p-6">
             <div className="flex justify-between">
               <h1>Project</h1>
               <div className="flex items-center">
@@ -33,12 +114,12 @@ export default function HomePage() {
               </div>
             </div>
             <div className="flex justify-between mt-6">
-              <Item title="Started" />
-              <Item title="On Going" />
-              <Item title="Completed" />
+              {Data.map((item, index) => {
+                return <Item key={index} title={item.title} subdata={item.subData} />;
+              })}
             </div>
           </div>
-          <div className="min-h-screen w-[25%] ">
+          <div className=" w-[25%] ">
             <div className="bg-white rounded-[30px] p-6" style={{ minHeight: '70vh' }}>
               <div className="rounded-2xl bg-purple-600 p-3 flex justify-between">
                 <div>
