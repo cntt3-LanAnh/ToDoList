@@ -50,5 +50,6 @@
   "i18n-ally.pathMatcher": "{locale}/{namespaces}.json",
   "i18n-ally.enabledFrameworks": ["i18next", "react"],
   "i18n-ally.namespace": true,
-  "i18n-ally.defaultNamespace": "common"
+  "i18n-ally.defaultNamespace": "common",
+  "cSpell.words": ["delowar"]
 }

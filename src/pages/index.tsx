@@ -1,41 +1,26 @@
+import Progress from '@delowar/react-circle-progressbar';
 import { Item } from 'components/ItemContainer';
 import { Layout } from 'components/Layout';
 import React from 'react';
 import { AiOutlineCheckSquare, AiOutlineClockCircle, AiOutlineDown, AiOutlineEdit, AiOutlineSmallDash } from 'react-icons/ai';
 
-import { GChart } from '../components/GChart';
-
 export default function HomePage() {
-  const activeUsers = [
-    ['Task', 'Hours per Day'],
-    ['Work', 11],
-    ['Eat', 2],
-    ['Commute', 2],
-    ['Watch TV', 2],
-    ['Sleep', 7],
-  ];
-  const options = {
-    title: 'My Daily Activities',
-    pieHole: 0.4,
-    is3D: false,
-  };
-
   const Data = [
     {
       subData: [
         {
           description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
         {
           description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
         {
           description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
       ],
@@ -44,28 +29,29 @@ export default function HomePage() {
     {
       subData: [
         {
-          description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          description:
+            'Wireframing,mockups,clinents , collaborationWireframing,mockups,clinents , collaborationWireframing,mockups,clinents , collaborationWireframing,mockups,clinents , collaborationWireframing,mockups,clinents , collaboration',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
         {
           description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
         {
           description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
         {
           description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
         {
           description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
       ],
@@ -75,37 +61,49 @@ export default function HomePage() {
       subData: [
         {
           description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
         {
           description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
         {
           description: 'Wireframing,mockups,clinents , collaboration',
-          avata: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
           tag: 'Web Design',
         },
       ],
       title: 'Complete',
     },
+    {
+      subData: [
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+        {
+          description: 'Wireframing,mockups,clinents , collaboration',
+          avatar: 'https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-hai-huoc-cho-dien-thoai-1.jpg',
+          tag: 'Web Design',
+        },
+      ],
+      title: 'Close',
+    },
   ];
-
-  // const ListItem = () => {
-  //   return(
-  //     Data.map((item, index) => {
-  //   <Item key={index} title="Started" description={item.description} avata={item.avata} tag={item.tag} />;
-  // })
-  //   )
-  // };
 
   return (
     <div>
       <Layout>
-        <div className="flex justify-between mx-6">
-          <div className="bg-white rounded-[30px]  w-[72%] p-6">
+        <div className=" justify-between mx-6 grid grid-cols-4 gap-4">
+          <div className="bg-white rounded-[30px] col-span-3  p-6">
             <div className="flex justify-between">
               <h1>Project</h1>
               <div className="flex items-center">
@@ -115,11 +113,11 @@ export default function HomePage() {
             </div>
             <div className="flex justify-between mt-6">
               {Data.map((item, index) => {
-                return <Item key={index} title={item.title} subdata={item.subData} />;
+                return <Item key={index} title={item.title} subData={item.subData} />;
               })}
             </div>
           </div>
-          <div className=" w-[25%] ">
+          <div>
             <div className="bg-white rounded-[30px] p-6" style={{ minHeight: '70vh' }}>
               <div className="rounded-2xl bg-purple-600 p-3 flex justify-between">
                 <div>
@@ -134,7 +132,28 @@ export default function HomePage() {
                   />
                 </div>
               </div>
-              <GChart chartType="PieChart" width="100%" height="400px" data={activeUsers} options={options} />
+
+              <div className="flex justify-center items-center mt-6">
+                <Progress
+                  percent={72}
+                  isBgShadow
+                  bgShadow={{
+                    inset: true,
+                    vertical: 2,
+                    horizontal: 2,
+                    blur: 4,
+                    opacity: 0.4,
+                    color: '#fdfbff',
+                  }}
+                  emptyColor="#f1ecff"
+                  borderWidth="6"
+                  borderBgWidth="40"
+                  fillColor="#7b59d2"
+                  // eslint-disable-next-line react/jsx-no-literals
+                >
+                  72%
+                </Progress>
+              </div>
 
               <div>
                 <h3>Project</h3>
@@ -173,8 +192,8 @@ export default function HomePage() {
             <div className="bg-white rounded-[30px] mt-6 p-6 " style={{ minHeight: '30vh' }}>
               <div className="flex justify-between items-center">
                 <div className="flex items-end">
-                  <div className="bg-purple-500 w-12 h-11 relative rounded-md ">
-                    <AiOutlineClockCircle className="absolute left-[30%] top-[32%]" />
+                  <div className="bg-purple-500 w-12 h-11 flex items-center rounded-md ">
+                    <AiOutlineClockCircle className="w-full" />
                   </div>
                   <div className="ml-6">
                     <p>Sunday,20 December</p>
@@ -189,8 +208,8 @@ export default function HomePage() {
               <div style={{ borderTop: '1px solid ' }} className="my-6" />
               <div className="flex justify-between items-center">
                 <div className="flex items-end">
-                  <div className="bg-blue-600 w-12 h-11 relative rounded-md ">
-                    <AiOutlineCheckSquare className="absolute left-[30%] top-[32%]" />
+                  <div className="bg-blue-600 w-12 h-11 flex items-center rounded-md ">
+                    <AiOutlineCheckSquare className="w-full" />
                   </div>
                   <div className="ml-6">
                     <p>Delaration centre</p>
