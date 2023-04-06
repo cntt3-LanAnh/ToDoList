@@ -1,3 +1,5 @@
+import 'tailwindcss/tailwind.css';
+
 import { CSSProperties } from 'react';
 
 import { TheHeading } from './TheHeading';
